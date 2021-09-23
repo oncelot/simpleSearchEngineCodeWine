@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 /*
@@ -15,4 +16,9 @@
 
 $router->get('/', function () use ($router) {
     return $router->app->version();
+});
+
+$router->get('/api', function (Request $request) {
+    $risultato = DB::table('codicevino')->where('codicecompleto','like','%' . $request->filtro. '%')->orWhere('descrizione','like','%' .$request->filtro. '%')->get();
+    return response()->json($risultato);
 });
