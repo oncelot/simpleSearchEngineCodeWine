@@ -17,21 +17,39 @@ render(){console.log("prova"); return (
 <div className="row">  
 <div className="search"  style={{textAlign:"center"}}>
   <h1 >Codicedelvino.it</h1>
- <input type="Text" onChange={changeEvent=>{letturaDati(changeEvent).then(x=>this.setState( {risultato:x})) }}  className="form-control" placeholder="Cerca"  />
+ <input type="Text" onChange={changeEvent=>{letturaDati(changeEvent).then(x=>this.setState( {risultato:x})) }}  className="form-control" placeholder="Cerca per codice vino/tipologia"  />
+ <select id="regioni">
+ <option value="">Seleziona...</option>
+  <option value="ABRUZZO">ABRUZZO</option>
+  <option value="BASILICATA">BASILICATA</option>
+  <option value="BOLZANO">BOLZANO</option>
+  <option value="CALABRIA">CALABRIA</option>
+  <option value="CAMPANIA">CAMPANIA</option>
+  <option value="EMILIA ROMAGNA">EMILIA ROMAGNA</option>
+  <option value="FRIULI VENEZIA GIULIA">FRIULI VENEZIA GIULIA</option>
+  <option value="LAZIO">LAZIO</option>
+  <option value="LIGURIA">LIGURIA</option>
+  <option value="LOMBARDIA">LOMBARDIA</option>
+  <option value="MARCHE">MARCHE</option>
+  <option value="MOLISE">MOLISE</option>
+  <option value="PIEMONTE">PIEMONTE</option>
+  <option value="PUGLIA">PUGLIA</option>
+  <option value="SARDEGNA">SARDEGNA</option>
+  <option value="SICILIA">SICILIA</option>
+  <option value="TOSCANA">TOSCANA</option>
+  <option value="TRENTO">TRENTO</option>
+  <option value="UMBRIA">UMBRIA</option>
+  <option value="VALLE D'AOSTA">VALLE D'AOSTA</option>
+  <option value="VENETO">VENETO</option>
+
+</select>
  <div>
  <table style={{"margin":"auto","color":"grey"}} className="table table-striped">
   
  <thead>
    <tr >
-    <th>CIDCTZO</th>
-    <th>CIDCDEN</th>
-    <th>CIDCSOT</th>
-    <th>CIDCVAR</th>
-    <th>CIDCCOL</th>
-    <th>CIDCMTR</th>
-    <th>CIDCCAT</th>
-    <th>CIDCINV</th>
-    <th>CIDCTIP</th>
+    
+    <th>Ragione</th>
     <th>Codice vino</th>
     <th>Descrizione</th>
   </tr>
@@ -40,16 +58,9 @@ render(){console.log("prova"); return (
 
 <tbody>
   <tr>
-    <td> {x.CIDCTZO}</td>
-    <td> {x.CIDCDEN}</td>
-    <td> {x.CIDCSOT}</td>
-    <td> {x.CIDCVAR}</td>
-    <td> {x.CIDCCOL}</td>
-    <td> {x.CIDCMTR}</td>
-    <td> {x.CIDCCAT}</td>
-    <td> {x.CIDCINV}</td>
-    <td> {x.CIDCTIP}</td>
-    <td> {x.codicecompleto}</td>
+    <td> {x.regione}</td>
+  
+    <td> {x.codicevino}</td>
     <td> {x.descrizione}</td>
     
   </tr>

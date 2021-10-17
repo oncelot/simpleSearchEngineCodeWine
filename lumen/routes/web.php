@@ -19,6 +19,6 @@ $router->get('/', function () use ($router) {
 });
 
 $router->get('/api', function (Request $request) {
-    $risultato = DB::table('codicevino')->where('codicecompleto','like','%' . $request->filtro. '%')->orWhere('descrizione','like','%' .$request->filtro. '%')->get();
+    $risultato = DB::table('vinocodice')->where('codicevino','like','%' . $request->filtro. '%')->orWhere('descrizione','like','%' .$request->filtro. '%')->get();
     return response()->json($risultato);
 });
