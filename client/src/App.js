@@ -7,7 +7,7 @@ class App extends React.Component{
   constructor(props){
 
     super(props);
-    this.state=null;
+    this.state={risultato:null, regioni:'',filtro:''};
    
     
 
@@ -17,8 +17,13 @@ render(){console.log("prova"); return (
 <div className="row">  
 <div className="search"  style={{textAlign:"center"}}>
   <h1 >Codicedelvino.it</h1>
- <input type="Text" onChange={changeEvent=>{letturaDati(changeEvent).then(x=>this.setState( {risultato:x})) }}  className="form-control" placeholder="Cerca per codice vino/tipologia"  />
- <select id="regioni">
+  {this.state.regioni}
+ <input type="Text" onChange={changeEvent=>{
+   this.setState({filtro:changeEvent.target.value},
+    ()=>{letturaDati(this.state).then(x=>{this.setState({risultato:x}) })}) }  }
+      className="form-control" placeholder="Cerca per codice vino/tipologia"  />
+ <select id="inputRegioni" onChange={changeEvent=>{this.setState({regioni:changeEvent.target.value},()=>{letturaDati(this.state).then(x=>{this.setState({risultato:x})})
+})} }>
  <option value="">Seleziona...</option>
   <option value="ABRUZZO">ABRUZZO</option>
   <option value="BASILICATA">BASILICATA</option>
@@ -54,7 +59,7 @@ render(){console.log("prova"); return (
     <th>Descrizione</th>
   </tr>
    </thead>
-   {this.state != null  ?  this.state.risultato.map(x => {return (
+   {this.state.risultato != null  ?  this.state.risultato.map(x => {return (
 
 <tbody>
   <tr>
