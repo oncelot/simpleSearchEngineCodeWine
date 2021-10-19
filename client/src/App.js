@@ -15,16 +15,19 @@ class App extends React.Component{
 render(){console.log("prova"); return (
 <div className="container">
 <div className="row">  
-<div className="search"  style={{textAlign:"center"}}>
+<div className="row"  style={{textAlign:"center"}}>
   <h1 >Codicedelvino.it</h1>
-  {this.state.regioni}
- <input type="Text" onChange={changeEvent=>{
-   this.setState({filtro:changeEvent.target.value},
-    ()=>{letturaDati(this.state).then(x=>{this.setState({risultato:x}) })}) }  }
-      className="form-control" placeholder="Cerca per codice vino/tipologia"  />
- <select id="inputRegioni" onChange={changeEvent=>{this.setState({regioni:changeEvent.target.value},()=>{letturaDati(this.state).then(x=>{this.setState({risultato:x})})
+  <div className="col-md-6">
+ <input type="Text" onKeyUp={changeEvent=>{
+          this.setState({ filtro: changeEvent.target.value },
+            () => {letturaDati(this.state).then(x => { this.setState({ risultato: x }) }) })
+        }}
+      className="form-control col-md-6" placeholder="Cerca per codice vino/tipologia"  />
+      </div>
+      <div className="col-md-6">
+ <select id="inputRegioni" className="form-control col-md-6" onChange={changeEvent=>{this.setState({regioni:changeEvent.target.value},()=>{letturaDati(this.state).then(x=>{this.setState({risultato:x})})
 })} }>
- <option value="">Seleziona...</option>
+ <option value="">Seleziona Regione</option>
   <option value="ABRUZZO">ABRUZZO</option>
   <option value="BASILICATA">BASILICATA</option>
   <option value="BOLZANO">BOLZANO</option>
@@ -48,6 +51,7 @@ render(){console.log("prova"); return (
   <option value="VENETO">VENETO</option>
 
 </select>
+</div>
  <div>
  <table style={{"margin":"auto","color":"grey"}} className="table table-striped">
   
@@ -81,11 +85,6 @@ render(){console.log("prova"); return (
 
 )
 }
-
-
-
-
-
 }
 
 export default App;

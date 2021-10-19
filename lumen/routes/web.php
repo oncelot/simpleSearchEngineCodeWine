@@ -18,7 +18,25 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/api', function (Request $request) {
-    $risultato = DB::table('vinocodice')->where('codicevino','like','%' . $request->filtro. '%')->orWhere('descrizione','like','%' .$request->filtro. '%')->get();
+$router->post('/api', function (Request $request) {
+//dd($request->json('filtro'));
+    if(empty($request->json('filtro'))  ){
+        $risultato = DB::table('vinocodice')->
+        Where('regione','like','%' .$request->json('regioni'). '%')->get();
+    }
+    if(empty($request->json('regioni'))  ){ 
+         $risultato = DB::table('vinocodice')->
+        where('codicevino','like','%' . $request->json('filtro'). '%')->
+        orWhere('descrizione','like','%' .$request->json('filtro'). '%')
+        ->get();
+    }
+    if(!empty($request->json('regioni')) && !empty($request->json('filtro')) ){
+
+        $risultato = DB::table('vinocodice')->
+        orwhere('codicevino','like','%' . $request->json('filtro'). '%')->
+        orWhere('descrizione','like','%' .$request->json('filtro'). '%')->
+        Where('regione','like','%' .$request->json('regioni'). '%')->get();
+    }
+    
     return response()->json($risultato);
 });
