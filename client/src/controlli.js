@@ -3,7 +3,7 @@ console.log(dati.risultato);
 
 if(dati.filtro.length > 2 || dati.regioni.length >1){
 return (
-  fetch('http://localhost:8000/api',
+  fetch('http://api.codicedelvino.it/api',
   {method:'POST',
   body:JSON.stringify(dati)}
   )

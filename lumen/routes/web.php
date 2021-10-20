@@ -24,13 +24,13 @@ $router->post('/api', function (Request $request) {
         $risultato = DB::table('vinocodice')->
         Where('regione','like','%' .$request->json('regioni'). '%')->get();
     }
-    if(empty($request->json('regioni'))  ){ 
+    if(empty($request->json('regioni')) && strlen($request->json('filtro'))>2 ){ 
          $risultato = DB::table('vinocodice')->
         where('codicevino','like','%' . $request->json('filtro'). '%')->
         orWhere('descrizione','like','%' .$request->json('filtro'). '%')
         ->get();
     }
-    if(!empty($request->json('regioni')) && !empty($request->json('filtro')) ){
+    if(!empty($request->json('regioni')) && !empty($request->json('filtro'))  && strlen($request->json('filtro'))>2){
 
         $risultato = DB::table('vinocodice')->
         orwhere('codicevino','like','%' . $request->json('filtro'). '%')->
