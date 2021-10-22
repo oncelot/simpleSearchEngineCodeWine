@@ -1,24 +1,28 @@
-import { useState } from "react"
+import { useState , useEffect} from "react"
 import { letturaDati } from "./controlli";
 
 export const Corpo= function (props){
   
 const [risultato,setRisultato]=useState();
 const [filtri,setFiltri]=useState({filtro:'',regioni:props.regioni,risultato:''});
-
+//useEffect(() => {
+ // letturaDati({filtro:filtri.filtro,regioni:filtri.regioni}).then(x=>{setRisultato(x);});
+//},[]);
 return (
 <div className="row">  
+    {filtri.filtro} {filtri.regioni}
+    lkjlkj
     <div className="row"  style={{textAlign:"center"}}>
       <h1 >Il motore di ricerca dei vini italiani</h1>
       <div className="col-md-6">
      <input type="Text" onKeyUp={changeEvent=>
-setFiltri({filtro:changeEvent.target.value}), ()=>
+setFiltri({filtro:changeEvent.target.value,regioni:filtri.regioni}), ()=>
 letturaDati(filtri).then(x=>{setRisultato(x)})
     }
           className="form-control col-md-6" placeholder="Cerca per codice vino/tipologia"  />
           </div>
           <div className="col-md-6">
-     <select id="inputRegioni" className="form-control col-md-6" onChange={changeEvent=>{letturaDati(changeEvent.target.value).then(x=>{setRisultato(x);})}}>
+     <select id="inputRegioni" value={filtri.regioni}   className="form-control col-md-6" onChange={changeEvent=>{letturaDati({filtro:filtri.filtro,regioni:changeEvent.target.value}).then(x=>{setRisultato(x);})}}>
      <option value="">Seleziona Regione</option>
       <option value="ABRUZZO">ABRUZZO</option>
       <option value="BASILICATA">BASILICATA</option>
@@ -72,5 +76,4 @@ letturaDati(filtri).then(x=>{setRisultato(x)})
      
       
     </div></div>)
-    document.getElementById('inputRegioni').value=props.regioni;
 }

@@ -98,7 +98,7 @@ render(){console.log("prova"); return (
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/ABRUZZO"><ABRUZZO /></Route>
+          <Route path="/ABRUZZO"><ABRUZZO/></Route>
           <Route path="/BASILICATA"><BASILICATA /></Route>
           <Route path="/BOLZANO"><BOLZANO /></Route>
           <Route path="/CALABRIA"><CALABRIA /></Route>
@@ -114,6 +114,7 @@ render(){console.log("prova"); return (
           <Route path="/PUGLIA"><PUGLIA /></Route>
           <Route path="/SARDEGNA"><SARDEGNA /></Route>
           <Route path="/SICILIA"><SICILIA /></Route>
+          <Route path="/TOSCANA"><TOSCANA /></Route>
           <Route path="/TRENTO"><TRENTO /></Route>
           <Route path="/UMBRIA"><UMBRIA /></Route>
           <Route path="/VALLEDAOSTA"><VALLEDAOSTA /></Route>
@@ -135,9 +136,9 @@ render(){console.log("prova"); return (
 }
 
 function Home() {
-  return ( <Corpo/>)
+  return ( <Corpo regioni=""/>)
 }
-function ABRUZZO() {return ( <Corpo regioni="ABRUZZO"/>)}
+function ABRUZZO() {return ( <Corpo regioni="ABRUZZO"/> ) }
 function BASILICATA() {return ( <Corpo regioni="BASILICATA"/>)}
 function BOLZANO() {return ( <Corpo regioni="BOLZANO"/>)}
 function CALABRIA() {return ( <Corpo regioni="CALABRIA"/>)}
