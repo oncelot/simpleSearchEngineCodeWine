@@ -6,13 +6,13 @@ import { Redirect } from "react-router";
 export const Corpo= function (props){
   
 const [risultato,setRisultato]=useState();
-const [filtri,setFiltri]=useState({filtro:'',regioni:props.regioni});
+const [filtri,setFiltri]=useState({filtro:'',regioni:''});
 useEffect(() => {
-  letturaDati({filtro:filtri.filtro,regioni:filtri.regioni}).then(x=>{setRisultato(x);});
+
 },[]);
 return (
 <div className="row">  
-   
+ 
     <div className="row"  style={{textAlign:"center"}}>
       <h1 >Il motore di ricerca dei vini italiani</h1>
       <div className="col-md-6">
