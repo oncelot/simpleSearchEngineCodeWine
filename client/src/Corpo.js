@@ -24,6 +24,7 @@ return (
           <div className="col-md-6">
     <select id="inputRegioni"  className="form-control col-md-6" 
     onChange={changeEvent=>{
+      setFiltri({regioni:changeEvent.target.value});
       letturaDati({filtro:filtri.filtro,regioni:changeEvent.target.value}).then(x=>{setRisultato(x)})
      
     }
