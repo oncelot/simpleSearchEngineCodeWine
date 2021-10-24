@@ -1,6 +1,6 @@
 export const letturaDati = dati => {
-console.log(dati.risultato);
 
+if(dati.filtro != null){
 if(dati.filtro.length > 2 || dati.regioni.length >1){
 return (
   fetch('http://api.codicedelvino.it/api',
@@ -11,7 +11,7 @@ return (
     .then(json =>  {
       return json;
     })
-)}else {return Promise.resolve( [{Regione:"",codicevino:"",descrizione:''}]);
+)}}else {return Promise.resolve( [{Regione:"",codicevino:"",descrizione:''}]);
 }
  }
 
