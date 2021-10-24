@@ -11,7 +11,8 @@ return (
     .then(json =>  {
       return json;
     })
-)}}else {return Promise.resolve( [{Regione:"",codicevino:"",descrizione:''}]);
-}
+)
+}else {return Promise.resolve( [{Regione:"",codicevino:"",descrizione:''}]);}
+}else {return Promise.resolve( [{Regione:"",codicevino:"",descrizione:''}]);}
  }
 

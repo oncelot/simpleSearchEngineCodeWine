@@ -2,10 +2,11 @@ import { useState , useEffect} from "react"
 import { ListaRegioni } from "./listaRegioni";
 import { letturaDati } from "./controlli";
 import { ListaVini } from "./listaVini";
+import { Redirect } from "react-router";
 export const Corpo= function (props){
   
 const [risultato,setRisultato]=useState();
-const [filtri,setFiltri]=useState({filtro:'',regioni:props.regioni,risultato:''});
+const [filtri,setFiltri]=useState({filtro:'',regioni:props.regioni});
 useEffect(() => {
   letturaDati({filtro:filtri.filtro,regioni:filtri.regioni}).then(x=>{setRisultato(x);});
 },[]);
@@ -23,7 +24,11 @@ return (
           <div className="col-md-6">
     <select id="inputRegioni"  className="form-control col-md-6" 
     onChange={changeEvent=>{
-      letturaDati({filtro:filtri.filtro,regioni:changeEvent.target.value}).then(x=>{setRisultato(x);})}}>
+      letturaDati({filtro:filtri.filtro,regioni:changeEvent.target.value}).then(x=>{setRisultato(x)})
+     
+    }
+      
+      }>
     <option value="">Seleziona Regione</option>
      <option value="ABRUZZO">ABRUZZO</option>
      <option value="BASILICATA">BASILICATA</option>
